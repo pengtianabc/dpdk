@@ -33,21 +33,6 @@ struct malloc_heap {
 	char name[RTE_HEAP_NAME_MAX_LEN];
 } __rte_cache_aligned;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-static inline unsigned
-malloc_get_numa_socket(void)
-{
-	unsigned socket_id = rte_socket_id();
-
-	if (socket_id == (unsigned)SOCKET_ID_ANY)
-		return 0;
-
-	return socket_id;
-}
-
 void *
 malloc_heap_alloc(const char *type, size_t size, int socket, unsigned int flags,
 		size_t align, size_t bound, bool contig);
@@ -100,8 +85,7 @@ malloc_socket_to_heap_id(unsigned int socket_id);
 int
 rte_eal_malloc_heap_init(void);
 
-#ifdef __cplusplus
-}
-#endif
+void
+rte_eal_malloc_heap_cleanup(void);
 
 #endif /* MALLOC_HEAP_H_ */
