@@ -41,6 +41,9 @@ extern "C" {
  * Physical memory segment descriptor.
  */
 #define RTE_MEMSEG_FLAG_DO_NOT_FREE (1 << 0)
+/** This segment is not filled with zeros. */
+#define RTE_MEMSEG_FLAG_DIRTY (1 << 1)
+
 /**< Prevent this segment from being freed back to the OS. */
 struct rte_memseg {
 	RTE_STD_C11
