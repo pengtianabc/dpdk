@@ -57,12 +57,12 @@ CONFIG_RTE_ENABLE_LTO=n
 #
 # Enable link time optimization
 #
-CONFIG_RTE_ENABLE_SANTIZE=n
+CONFIG_RTE_ENABLE_ASAN=n
 
 #
 # Compile to share library
 #
-CONFIG_RTE_BUILD_SHARED_LIB=n
+CONFIG_RTE_BUILD_SHARED_LIB=y
 
 #
 # Use newest code breaking previous ABI

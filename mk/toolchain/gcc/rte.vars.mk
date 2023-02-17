@@ -74,9 +74,9 @@ WERROR_FLAGS += -Wno-lto-type-mismatch
 endif
 endif
 
-ifeq ($(CONFIG_RTE_ENABLE_SANTIZE),y)
-TOOLCHAIN_CFLAGS += -fsanitize=address -static-libasan -fno-omit-frame-pointer
-TOOLCHAIN_LDFLAGS +=
+ifeq ($(CONFIG_RTE_ENABLE_ASAN),y)
+CFLAGS += -fsanitize=address -fno-omit-frame-pointer
+LDFLAGS += -static-libasan
 endif
 
 

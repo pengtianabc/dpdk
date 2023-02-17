@@ -93,7 +93,7 @@ else
 	endif
 
 	ifeq ($(shell test $(GCC_VERSION) -lt 48 && echo 1), 1)
-		CONFIG_RTE_ENABLE_SANTIZE=n
+		CONFIG_RTE_ENABLE_ASAN=n
 	endif
 
 	# Disable thunderx PMD for gcc < 4.7
