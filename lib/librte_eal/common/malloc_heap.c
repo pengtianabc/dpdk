@@ -76,7 +76,6 @@ check_hugepage_sz(unsigned flags, uint64_t hugepage_sz)
 int
 malloc_socket_to_heap_id(unsigned int socket_id)
 {
-	struct rte_mem_config *mcfg = rte_eal_get_configuration()->mem_config;
 	int i;
 
 	for (i = 0; i < RTE_MAX_HEAPS; i++) {
@@ -485,7 +484,7 @@ try_expand_heap_secondary(struct malloc_heap *heap, uint64_t pg_sz,
 	req.alloc_req.elt_size = elt_size;
 	req.alloc_req.page_sz = pg_sz;
 	req.alloc_req.socket = socket;
-	req.alloc_req.malloc_heap_idx = heap - mcfg->malloc_heaps;
+	req.alloc_req.heap = heap;
 
 	req_result = request_to_primary(&req);
 
@@ -1443,10 +1442,4 @@ rte_eal_malloc_heap_init(void)
 
 	/* add all IOVA-contiguous areas to the heap */
 	return rte_memseg_contig_walk(malloc_add_seg, NULL);
-}
-
-void
-rte_eal_malloc_heap_cleanup(void)
-{
-	unregister_mp_requests();
 }

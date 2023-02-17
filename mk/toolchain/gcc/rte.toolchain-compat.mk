@@ -92,6 +92,10 @@ else
 		CONFIG_RTE_ENABLE_LTO=n
 	endif
 
+	ifeq ($(shell test $(GCC_VERSION) -lt 48 && echo 1), 1)
+		CONFIG_RTE_ENABLE_SANTIZE=n
+	endif
+
 	# Disable thunderx PMD for gcc < 4.7
 	ifeq ($(shell test $(GCC_VERSION) -lt 47 && echo 1), 1)
 		CONFIG_RTE_LIBRTE_THUNDERX_NICVF_PMD=d

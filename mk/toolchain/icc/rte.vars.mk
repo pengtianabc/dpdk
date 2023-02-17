@@ -58,5 +58,10 @@ TOOLCHAIN_CFLAGS += -flto -ffat-lto-objects
 TOOLCHAIN_LDFLAGS += -flto
 endif
 
+ifeq ($(CONFIG_RTE_ENABLE_SANTIZE),y)
+TOOLCHAIN_CFLAGS += -fsanitize=address -fno-omit-frame-pointer
+TOOLCHAIN_LDFLAGS += -static-libasan
+endif
+
 export CC AS AR LD OBJCOPY OBJDUMP STRIP READELF
 export TOOLCHAIN_CFLAGS TOOLCHAIN_LDFLAGS TOOLCHAIN_ASFLAGS

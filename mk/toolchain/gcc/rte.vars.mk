@@ -74,6 +74,12 @@ WERROR_FLAGS += -Wno-lto-type-mismatch
 endif
 endif
 
+ifeq ($(CONFIG_RTE_ENABLE_SANTIZE),y)
+TOOLCHAIN_CFLAGS += -fsanitize=address -fno-omit-frame-pointer
+TOOLCHAIN_LDFLAGS += -static-libasan
+endif
+
+
 # disable warning for non-initialised fields
 WERROR_FLAGS += -Wno-missing-field-initializers
 # workaround GCC bug with warning "may be used uninitialized"
