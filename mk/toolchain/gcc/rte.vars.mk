@@ -75,8 +75,8 @@ endif
 endif
 
 ifeq ($(CONFIG_RTE_ENABLE_SANTIZE),y)
-TOOLCHAIN_CFLAGS += -fsanitize=address -fno-omit-frame-pointer
-TOOLCHAIN_LDFLAGS += -static-libasan
+TOOLCHAIN_CFLAGS += -fsanitize=address -static-libasan -fno-omit-frame-pointer
+TOOLCHAIN_LDFLAGS +=
 endif
 
 

@@ -76,6 +76,7 @@ check_hugepage_sz(unsigned flags, uint64_t hugepage_sz)
 int
 malloc_socket_to_heap_id(unsigned int socket_id)
 {
+	struct rte_mem_config *mcfg = rte_eal_get_configuration()->mem_config;
 	int i;
 
 	for (i = 0; i < RTE_MAX_HEAPS; i++) {
@@ -470,7 +471,6 @@ try_expand_heap_secondary(struct malloc_heap *heap, uint64_t pg_sz,
 		size_t elt_size, int socket, unsigned int flags, size_t align,
 		size_t bound, bool contig)
 {
-	struct rte_mem_config *mcfg = rte_eal_get_configuration()->mem_config;
 	struct malloc_mp_req req;
 	int req_result;
 

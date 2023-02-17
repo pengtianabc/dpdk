@@ -971,7 +971,7 @@ eal_memalloc_alloc_seg_bulk(struct rte_memseg **ms, int n_segs, size_t page_sz,
 #ifdef RTE_EAL_NUMA_AWARE_HUGEPAGES
 	bool have_numa = false;
 	int oldpolicy;
-	struct bitmask *oldmask;
+	struct bitmask *oldmask = NULL;
 #endif
 	struct alloc_walk_param wa;
 	struct hugepage_info *hi = NULL;
